@@ -5,7 +5,7 @@ defmodule OpenTelemetryAPIExperimental.Counter do
 
   defmacro create(name, opts) do
     quote bind_quoted: [name: name, opts: opts] do
-      {_meter_module, meter} = :opentelemetry_experimental.get_meter(:opentelemetry.get_application_scope(__MODULE__)),
+      {_meter_module, meter} = :opentelemetry_experimental.get_meter(:opentelemetry.get_application_scope(__MODULE__))
 
       :otel_meter.create_counter(
         meter,
@@ -17,7 +17,7 @@ defmodule OpenTelemetryAPIExperimental.Counter do
 
   defmacro add(name, number, attributes) do
     quote bind_quoted: [name: name, number: number, attributes: attributes] do
-      {_meter_module, meter} = :opentelemetry_experimental.get_meter(:opentelemetry.get_application_scope(__MODULE__)),
+      {_meter_module, meter} = :opentelemetry_experimental.get_meter(:opentelemetry.get_application_scope(__MODULE__))
 
       :otel_counter.add(
         OpenTelemetry.Ctx.get_current(),
